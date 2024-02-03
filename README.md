@@ -1,5 +1,5 @@
-# CEN3031-Project
-Craigslist for fellow Gators.
+# Scaly Steals
+Better and more secure alternative to Craigslist and Facebook Marketplace for fellow Gators.
 
 ## Functionality
 - Communication between users (Chat)
