@@ -50,3 +50,6 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
   - `/home`
   - `/[category]`
   - `/login`
+
+### Figma Website Design
+https://www.figma.com/file/BqcMwD0KCsIroRfv1jHqg3/Scaly-Steals?type=design&node-id=4%3A164&mode=design&t=RpGB0S8eBBPITFwf-1
