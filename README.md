@@ -8,8 +8,10 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 - Payment (TBD)
 - Search bar
 - Cart
+  - Must sign in to add to cart
 - Public meetups only
 - Log-in / profiles
+  - Unique username
 - Save a listing
   - personal lists
 - Listing cards
@@ -39,7 +41,7 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 
 ### Back-end
 - Python
-  - Relational db: MySQL v PostgreSQL
+  - Relational db: MySQL
 - Socket.io
 
 ### Workflow
