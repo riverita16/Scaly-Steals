@@ -1,6 +1,17 @@
 # Scaly Steals
 Better and more secure alternative to Craigslist and Facebook Marketplace for fellow Gators.
 
+## Latest Updates
+- Some proof of concept stuff completed:
+  - mongodb set up
+  - web app communicates with db
+  - admin panel view in the works (scaly-steals-admin)
+    - can create categories
+  - client view template in progress (scaly-steals-client)
+
+*Important Notes*
+Functionality requires Google Cloud credentials and MongoDB URI which are not pushed to the repository.
+
 ## Functionality
 - Communication between users (Chat)
   - email notficiation (configurable)
@@ -31,8 +42,7 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 
 ### Front-end
 - JavaScript
-  - React
-  - Express
+  - Next.js
   - npm
  
 - Home page
@@ -40,8 +50,8 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
   - terms of service (we are not liable)
 
 ### Back-end
-- Python
-  - Relational db: MySQL
+- Mongodb
+- Axios
 - Socket.io
 
 ### Workflow
