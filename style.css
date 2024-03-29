@@ -1,0 +1,26 @@
+nav{
+   background-color: #FFC085;
+   color: green;
+   padding: 20px 50px;
+}
+
+.navBarTop{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.searchMag{
+   display: flex;
+   align-items: center;
+   background-color: black;
+}
+
+.searchInput{
+   border: none;
+   background-color: transparent;
+}
+
+.searchInput::placeholder{
+   color: lightgray;
+}
