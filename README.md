@@ -12,6 +12,8 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 *Important Notes*
 Functionality requires Google Cloud credentials and MongoDB URI which are not pushed to the repository.
 
+Also requires AWS for image persistent storage.
+
 ## Functionality
 - Communication between users (Chat)
   - email notficiation (configurable)

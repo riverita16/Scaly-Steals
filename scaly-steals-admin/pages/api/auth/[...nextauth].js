@@ -1,5 +1,6 @@
 // only ufl sso in final product
 // google for testing
+// fix nextauth trying to sign up instead of login and failing
 
 import clientPromise from '@/lib/mongodb'
 import { MongoDBAdapter } from '@auth/mongodb-adapter'

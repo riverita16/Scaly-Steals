@@ -2,10 +2,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import Center from "./Center";
 
-// 6:47:50
-
 const StyledHeader = styled.header`
-    background-color: green;
+    background-color: #3EB489;
 `;
 
 const Logo = styled(Link)`
