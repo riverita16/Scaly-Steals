@@ -104,20 +104,18 @@ export default function ProductForm({
                     Photos
                 </label>
                 <div className="mb-2 flex flex-wrap gap-1">
-                    <ReactSortable
-                        list={images}
-                        className="flex flex-wrap gap-1"
-                        setList={updateImagesOrder}>
+                    <ReactSortable list={images} className="flex flex-wrap gap-1" setList={updateImagesOrder}>
                         {!!images?.length && images.map(link => (
-                        <div key={link} className="h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200">
-                            <img src={link} alt="" className="rounded-lg"/>
+                        <div key={link} className="h-24 bg-white shadow-sm rounded-sm border border-gray-200">
+                            <img id={link} src={link} alt="" className="h-full rounded-lg"/>
+                            
                         </div>
                         ))}
                     </ReactSortable>
 
                     {isUploading && (
                         <div className="h-24 flex items-center">
-                        <Spinner />
+                            <Spinner />
                         </div>
                     )}
                     

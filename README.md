@@ -1,7 +1,14 @@
 # Scaly Steals
 Better and more secure alternative to Craigslist and Facebook Marketplace for fellow Gators.
 
-## Latest Updates
+## TODOS
+- implement sign in with other credentials
+- implement sign out
+- fix photo preview for products (refresh for initial upload)
+
+## Latest Updates (latest first)
+- fix edit and delete buttons in categories and products page (admin panel)
+- backend communicates with AWS bucket for image storage
 - Some proof of concept stuff completed:
   - mongodb set up
   - web app communicates with db
