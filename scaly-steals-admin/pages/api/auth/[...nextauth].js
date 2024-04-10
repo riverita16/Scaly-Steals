@@ -39,7 +39,7 @@ export default NextAuth({
     CredentialsProvider({
       name: "Credentials",
       async authorize(credentials, req) {
-        await connectDatabase();
+        await mongooseConnect();
 
         // check user existance
         const user = await User.findOne({ email: credentials?.email });

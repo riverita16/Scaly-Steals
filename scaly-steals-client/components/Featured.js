@@ -2,12 +2,12 @@ import Center from "./Center";
 import styled from "styled-components";
 import Button from "./Button";
 
-// left off at 7:21:47
-
 const Bg = styled.div`
     background-color: #3EB489;
     color: #fff;
     padding: 50px 0;
+    width: 90%;
+    border-radius: 20px;
 `;
 const Title = styled.h1`
     margin: 0;

@@ -35,6 +35,13 @@ const StyledButton = styled.button`
             height: 20px;
         }
     `}
+    ${props => props.reg && css`
+        font-size: 0.7rem;
+        
+        svg {
+            height: 12px;
+        }
+    `}
 `;
 
 export default function Button({children,...rest}) {

@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import styled from "styled-components";
 
 const ProfileDiv = styled.div`
@@ -25,14 +25,6 @@ const SignOut = styled.button`
 
 export default function Home() {
   const {data: session} = useSession();
-  if (!session) { return (
-    <div className="bg-green-700 w-screen h-screen flex items-center">
-      <div className="text-center w-full">
-        <button onClick={() => signIn('google')} className="bg-white p-2 px-4 rounded-lg">Log In</button>
-      </div>
-    </div>
-  );}
-  
   return <Layout>
     <div className="text-white flex justify-between">
       <h2>
@@ -47,8 +39,7 @@ export default function Home() {
             {session?.user?.name}
           </span>
         </ProfileDiv>
-        {/* Implement this */}
-        <SignOut>
+        <SignOut onClick={() => signOut({redirect: false, callbackUrl: "/"})}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
           </svg>

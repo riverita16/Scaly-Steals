@@ -2,11 +2,22 @@
 Better and more secure alternative to Craigslist and Facebook Marketplace for fellow Gators.
 
 ## TODOS
+Client front:
+- fix text display fitting on listing
+
+- apply template
+Sign up backend (copy from admin panel):
 - implement sign in with other credentials
-- implement sign out
+  - check for ufl email
+  - add verify password field
+Admin panel:
 - fix photo preview for products (refresh for initial upload)
 
 ## Latest Updates (latest first)
+- display all listings
+- client has navbar and search bar template set up
+- displays one of the listings
+- can sign out (admin panel)
 - fix edit and delete buttons in categories and products page (admin panel)
 - backend communicates with AWS bucket for image storage
 - Some proof of concept stuff completed:
