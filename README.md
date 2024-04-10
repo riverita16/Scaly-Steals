@@ -4,12 +4,13 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 ## TODOS
 Client front:
 - fix text display fitting on listing
-
 - apply template
+
 Sign up backend (copy from admin panel):
 - implement sign in with other credentials
   - check for ufl email
   - add verify password field
+
 Admin panel:
 - fix photo preview for products (refresh for initial upload)
 
