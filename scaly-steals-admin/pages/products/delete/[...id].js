@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import styled from "styled-components";
 
 const YesBtn = styled.button`
   background-color: red;

@@ -1,5 +1,5 @@
-import ProductForm from "@/components/CategoryForm";
-import { useState } from "react";
+import CategoryForm from "@/components/CategoryForm";
+import Layout from "@/components/Layout";
 
 export default function NewCategory() {
     return (

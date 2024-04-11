@@ -18,13 +18,13 @@ const Page = styled.div`
   padding-bottom: 100px;
 `;
 
-export default function HomePage({featuredProduct, allProducts}) {
+export default function ClothingPage({featuredProduct, clothing}) {
   return (
     <Page>
       <Header />
       <Featured product={featuredProduct}/>
       <Categories />
-      <Listings products={allProducts}/>
+      <Listings products={clothing}/>
     </Page>
   );
 }
@@ -33,12 +33,12 @@ export async function getServerSideProps() {
   const featuredProductId = '6606d50f0e9cd5430ad592f9';
   await mongooseConnect();
   const featuredProduct = await Product.findById(featuredProductId);
-  const allProducts = await Product.find({}, null, {sort: {'_id':-1}, limit:10});
+  const clothing = await Product.find({category: 'clothing'}, null, {sort: {'_id':-1}, limit:10});
   
   return {
     props: {
       featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
-      allProducts: JSON.parse(JSON.stringify(allProducts)),
+      clothing: JSON.parse(JSON.stringify(clothing)),
     },
   };
 }

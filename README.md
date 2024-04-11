@@ -3,8 +3,15 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 
 ## TODOS
 Client front:
+- add user id to product schema
+- add product id to list in user schema
+- add to cart functionality
+- saved, cart, profile page
+- implement like button
+- allow managing of sort and limit in server side props
 - fix text display fitting on listing
 - apply template
+- fix clothing and vehicle svgs
 
 Sign up backend (copy from admin panel):
 - implement sign in with other credentials
@@ -15,6 +22,8 @@ Admin panel:
 - fix photo preview for products (refresh for initial upload)
 
 ## Latest Updates (latest first)
+- implement see more pages
+- add price
 - display all listings
 - client has navbar and search bar template set up
 - displays one of the listings
