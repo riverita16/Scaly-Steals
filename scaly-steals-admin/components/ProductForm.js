@@ -25,12 +25,14 @@ export default function ProductForm({
   _id,
   title:existingTitle,
   description:existingDescription,
+  user: existingUser,
   price:existingPrice,
   images:existingImages,
   category:assignedCategory,
 }) {
     const [title,setTitle] = useState(existingTitle || '');
     const [description,setDescription] = useState(existingDescription || '');
+    const [user, setUser] = useState(existingUser || '');
     const [category,setCategory] = useState(assignedCategory || '');
     const [price,setPrice] = useState(existingPrice || '');
     const [images,setImages] = useState(existingImages || []);
@@ -48,7 +50,7 @@ export default function ProductForm({
     async function saveProduct(ev) {
         ev.preventDefault();
         const data = {
-            title,description,price,images,category
+            title,description,user,price,images,category
         };
         if (_id) {
             //update
@@ -88,6 +90,9 @@ export default function ProductForm({
         <form onSubmit={saveProduct}>
             <label>Product name</label>
             <input type="text" placeholder="product name" value={title} onChange={ev => setTitle(ev.target.value)}/>
+
+            <label>User ID</label>
+            <input type="text" placeholder="user id" value={user} onChange={ev => setUser(ev.target.value)}/>
 
             <CategoryDiv>
                 <label>Category</label>

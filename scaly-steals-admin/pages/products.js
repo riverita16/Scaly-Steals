@@ -17,7 +17,6 @@ export default function Products() {
     })
   }, []);
 
-  // continue from 1:26:26
   return <Layout>
     <Link className="bg-green-700 text-white rounded-md py-1 px-2" href={'/products/new'}>
       Add a new product

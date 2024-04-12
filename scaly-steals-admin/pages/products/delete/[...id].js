@@ -37,6 +37,7 @@ export default function DeleteProductPage() {
     await axios.delete('/api/products?id='+id);
     goBack();
   }
+  
   return (
     <Layout>
       <h1 className="text-center">Do you really want to delete
