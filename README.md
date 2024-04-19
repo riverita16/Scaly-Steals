@@ -7,8 +7,9 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 2. Run `npm install -g yarn`
 3. `cd` to ./scaly-steals-admin/
 4. Run `yarn install`
-5. Run `yarn dev`
-6. Redo steps 4 and 5 in another terminal for ./scaly-steals-client/
+5. Ensure `.env` file is set up with proper credentials
+6. Run `yarn dev`
+7. Redo steps 4-6 in another terminal for ./scaly-steals-client/
 
 ### To start app on localhost
 `yarn dev`
