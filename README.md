@@ -16,10 +16,10 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 
 ## TODOS
 Client front:
+- make like button change on click etc
 - create listing button
 - saved, cart page
 - add to cart functionality
-- implement like button
 - allow managing of sort and limit in server side props
 - add profile ratings
 - fix text display fitting on listing
@@ -36,6 +36,7 @@ Admin panel:
 - fix photo preview for products (refresh for initial upload)
 
 ## Latest Updates (latest first)
+- added like button
 - fixed issue accessing profile page
 - profile page displays user info and listings
 - add user id to product schema

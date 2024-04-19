@@ -10,7 +10,6 @@ const StyledButton = styled.button`
     
     svg {
         height: 16px;
-        margin-right: 5px
     }
 
     ${props => props.white && !props.outline && css`
@@ -26,6 +25,24 @@ const StyledButton = styled.button`
         background-color: #89CFF0;
         color: #fff;
         border: 1px solid #89CFF0;
+
+        svg {
+            margin-right: 5px;
+        }
+    `}
+    ${props => props.like && css`
+        background-color: #fe8181;
+        color: #fff;
+        border: 1px solid #fe8181;
+
+        :hover {
+            fill: #fff;
+        }
+    `}
+    ${props => props.liked && css`
+        background-color: #fe8181;
+        color: #fff;
+        border: 1px solid #fe8181;
     `}
     ${props => props.size === 'l' && css`
         font-size: 1.2rem;
