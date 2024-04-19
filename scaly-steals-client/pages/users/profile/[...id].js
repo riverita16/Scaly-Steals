@@ -5,6 +5,8 @@ import styled from "styled-components";
 import UserInfo from "@/components/UserInfo";
 import Header from "@/components/Header";
 import UserListings from "@/components/UserListings";
+import { mongooseConnect } from "@/lib/mongoose";
+import { User } from "@/models/User";
 
 const Page = styled.div`
   background-color: rgb(250, 222, 168);
@@ -18,7 +20,7 @@ const Page = styled.div`
   padding-bottom: 100px;
 `;
 
-export default function profile() {
+export default function profile({user}) {
     const router = useRouter();
     const [userInfo,setUserInfo] = useState();
     const [productIds, setProductIds] = useState();
@@ -36,9 +38,21 @@ export default function profile() {
 
     return (
         <Page>
-            <Header />
+            <Header  user={user}/>
             <UserInfo user={userInfo} />
             <UserListings ids={productIds} />
         </Page>
     );
+}
+
+export async function getServerSideProps() {
+    const tempUserId = '6606c52955e3c5a7c65fed2f'; // CHANGE THIS WHEN WE HAVE LOGIN
+    await mongooseConnect();
+    const user = await User.findById(tempUserId);
+
+    return {
+        props: {
+            user: JSON.parse(JSON.stringify(user)),
+        },
+    };
 }

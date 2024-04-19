@@ -18,10 +18,10 @@ const Page = styled.div`
   padding-bottom: 100px;
 `;
 
-export default function VehiclesPage({featuredProduct, vehicles}) {
+export default function VehiclesPage({featuredProduct, vehicles, user}) {
   return (
     <Page>
-      <Header />
+      <Header user={user}/>
       <Featured product={featuredProduct}/>
       <Categories />
       <Listings products={vehicles}/>
@@ -31,14 +31,17 @@ export default function VehiclesPage({featuredProduct, vehicles}) {
 
 export async function getServerSideProps() {
   const featuredProductId = '6606d50f0e9cd5430ad592f9';
+  const tempUserId = '6606c52955e3c5a7c65fed2f'; // CHANGE THIS WHEN WE HAVE LOGIN
   await mongooseConnect();
   const featuredProduct = await Product.findById(featuredProductId);
   const vehicles = await Product.find({category: 'vehicles'}, null, {sort: {'_id':-1}, limit:10});
+  const user = await User.findById(tempUserId);
   
   return {
     props: {
       featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
       vehicles: JSON.parse(JSON.stringify(vehicles)),
+      user: JSON.parse(JSON.stringify(user)),
     },
   };
 }
