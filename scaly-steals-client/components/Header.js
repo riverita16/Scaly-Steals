@@ -1,7 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Center from "./Center";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const StyledHeader = styled.header`
     background-color: rgb(250, 222, 168);
@@ -31,7 +33,7 @@ const Wrapper = styled.div`
     padding: 15px 0;
 `;
 
-const SearchBar = styled.div`
+const SearchBar = styled(Link)`
     color: #000;
     width: 100%;
     height: 75%;
@@ -78,8 +80,8 @@ const NavLink = styled(Link)`
 `;
 
 export default function Header({user}) {
-    const [search,setSearch] = useState('');
-
+   const[search, setSearch] = useState('');
+   
     return (
         <StyledHeader>
             <Center>
@@ -87,11 +89,17 @@ export default function Header({user}) {
                     <LogoContainer>
                         <Logo href={'/'}><img id="gator" src="/images/gator.png" alt="Gator" /><img id="logo" src="/images/scaly-steals.png" alt="Scaly Steals" /></Logo>
                     </LogoContainer>
-                    <SearchBar>
+                    <SearchBar href={'/search'}> 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
-                        <input type="text" placeholder="Search listings" value={search} onChange={ev => setSearch(ev.target.value)}/>
+                        <input 
+                            autoFocus
+                            placeholder="Search listings..."
+                            value={search}
+                            onChange={(ev) => setSearch(ev.target.value)}
+                            // onKeyPress={handleKeyPress}
+                            />
                     </SearchBar>
                     <StyledNav>
                         <NavLink href={'/saved'}>
