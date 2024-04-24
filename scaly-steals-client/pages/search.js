@@ -1,9 +1,22 @@
 import Link from "next/link";
+import Center from "@/components/Center";
+import Listings from "@/components/Listings";
 import styled from "styled-components";
-import Center from "./Center";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
+import {Product} from "@/models/Product";
+import {mongooseConnect} from "@/lib/mongoose";
+import { useState, useEffect } from "react";
+const Page = styled.div`
+  background-color: rgb(250, 222, 168);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  overflow: scroll;
+  padding-bottom: 100px;
+`;
 
 const StyledHeader = styled.header`
     background-color: rgb(250, 222, 168);
@@ -79,10 +92,21 @@ const NavLink = styled(Link)`
     }
 `;
 
-export default function Header({user}) {
-   const[search, setSearch] = useState('');
-   
-    return (
+export default function SearchPage({user}) {
+  const [search, setSearch] = useState('');
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    if(search.length >= 0)
+    {
+       axios.get('/api/search?query='+encodeURIComponent(search))
+       .then(response => {setProduct(response.data)});
+    }
+   }, [search])
+  
+
+  return (
+    <Page>
         <StyledHeader>
             <Center>
                 <Wrapper>
@@ -121,5 +145,19 @@ export default function Header({user}) {
                 </Wrapper>
             </Center>
         </StyledHeader>
-    )
+      <Listings products={product}/>
+    </Page>
+  );
+}
+
+export async function getServerSideProps() {
+  const featuredProductId = '6606d50f0e9cd5430ad592f9';
+  await mongooseConnect();
+  const featuredProduct = await Product.findById(featuredProductId);
+  
+  return {
+    props: {
+      featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
+    },
+  };
 }
