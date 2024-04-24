@@ -2,7 +2,6 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import styled from "styled-components";
-import UserInfo from "@/components/UserInfo";
 import Header from "@/components/Header";
 import UserListings from "@/components/UserListings";
 import { mongooseConnect } from "@/lib/mongoose";

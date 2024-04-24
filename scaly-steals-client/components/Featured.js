@@ -2,6 +2,7 @@ import Center from "./Center";
 import styled from "styled-components";
 import Button from "./Button";
 import ButtonLink from "./ButtonLink";
+import axios from "axios";
 
 const Bg = styled.div`
     background-color: #3EB489;

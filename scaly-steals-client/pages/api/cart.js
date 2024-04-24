@@ -16,8 +16,9 @@ export default async function handler(req, res) {
 
     // delete from cart
     if (method === "DELETE") {
-        const {id, user} = req.body;
-        await User.findOneAndUpdate({_id: new ObjectId(user)}, {$pull : {cart:id}});
-        res.json(true);
+        if (req.query?.user && req.query?.id) {
+            await User.findOneAndUpdate({_id: new ObjectId(req.query?.user)}, {$pull : {cart:req.query?.id}});
+            res.json(true);
+        }
     }
 }

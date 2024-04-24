@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "./Button";
 import ButtonLink from "./ButtonLink";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const Bg = styled.div`
     background-color: #3EB489;
