@@ -5,6 +5,7 @@ import Categories from "@/components/Categories";
 import {Product} from "@/models/Product";
 import {mongooseConnect} from "@/lib/mongoose";
 import styled from "styled-components";
+import { User } from "@/models/User";
 
 const Page = styled.div`
   background-color: rgb(250, 222, 168);
@@ -18,27 +19,30 @@ const Page = styled.div`
   padding-bottom: 100px;
 `;
 
-export default function BooksPage({featuredProduct, books}) {
+export default function BooksPage({featuredProduct, books, user}) {
   return (
     <Page>
-      <Header />
-      <Featured product={featuredProduct}/>
+      <Header user={user}/>
+      <Featured user={user?._id} product={featuredProduct}/>
       <Categories />
-      <Listings products={books}/>
+      <Listings user={user?._id} products={books}/>
     </Page>
   );
 }
 
 export async function getServerSideProps() {
+  const tempUserId = '6606c52955e3c5a7c65fed2f'; // CHANGE THIS WHEN WE HAVE LOGIN
   const featuredProductId = '6606d50f0e9cd5430ad592f9';
   await mongooseConnect();
   const featuredProduct = await Product.findById(featuredProductId);
   const books = await Product.find({category: 'books'}, null, {sort: {'_id':-1}, limit:10});
+  const user = await User.findById(tempUserId);
   
   return {
     props: {
       featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
       books: JSON.parse(JSON.stringify(books)),
+      user: JSON.parse(JSON.stringify(user)),
     },
   };
 }

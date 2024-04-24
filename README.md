@@ -1,12 +1,25 @@
 # Scaly Steals
 Better and more secure alternative to Craigslist and Facebook Marketplace for fellow Gators.
 
+# Setup
+### First Time
+1. Install `npm` or `npx`
+2. Run `npm install -g yarn`
+3. `cd` to ./scaly-steals-admin/
+4. Run `yarn install`
+5. Ensure `.env` file is set up with proper credentials
+6. Run `yarn dev`
+7. Redo steps 4-6 in another terminal for ./scaly-steals-client/
+
+### To start app on localhost
+`yarn dev`
+
 ## TODOS
 Client front:
+- make like button change on click etc
 - create listing button
 - saved, cart page
 - add to cart functionality
-- implement like button
 - allow managing of sort and limit in server side props
 - add profile ratings
 - fix text display fitting on listing
@@ -23,6 +36,8 @@ Admin panel:
 - fix photo preview for products (refresh for initial upload)
 
 ## Latest Updates (latest first)
+- added like button
+- fixed issue accessing profile page
 - profile page displays user info and listings
 - add user id to product schema
 - add product id to list in user schema

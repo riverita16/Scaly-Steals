@@ -2,7 +2,6 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import styled from "styled-components";
-import UserInfo from "@/components/UserInfo";
 import Header from "@/components/Header";
 import UserListings from "@/components/UserListings";
 import { mongooseConnect } from "@/lib/mongoose";
@@ -20,9 +19,8 @@ const Page = styled.div`
   padding-bottom: 100px;
 `;
 
-export default function profile({user}) {
+export default function saved({user}) {
     const router = useRouter();
-    const [userInfo,setUserInfo] = useState();
     const [productIds, setProductIds] = useState();
     const {id} = router.query;
     useEffect(() => {
@@ -31,15 +29,14 @@ export default function profile({user}) {
         }
 
         axios.get('/api/users?id='+id).then(response => {
-            setUserInfo(response.data);
-            setProductIds(response.data.products);
+            setProductIds(response.data.liked);
         });
     }, [id]);
 
     return (
         <Page>
-            <Header  user={user}/>
-            <UserInfo user={userInfo} />
+            <Header user={user}/>
+            <h1>LIKED</h1>
             <UserListings user={user._id} ids={productIds} />
         </Page>
     );

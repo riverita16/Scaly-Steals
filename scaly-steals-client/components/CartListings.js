@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Center from "./Center";
-import Listing from "./Listing";
+import CartListing from "./CartListing";
 
 const Bg = styled.div`
-    background-color: #3EB489;
+    background-color: #89CFF0;
     color: #fff;
     padding: 20px 0;
     width: 90%;
@@ -13,17 +13,17 @@ const Bg = styled.div`
 
 const ListingsContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1.1fr));
+    grid-template-rows: repeat(1, minmax(0, 1.1fr));
     gap: 10px;
 `;
 
-export default function UserListings({user, ids}) {
+export default function CartListings({user, ids}) {
     return (
         <Bg>
             <Center>
                 <ListingsContainer>
                     {ids?.map(id => (
-                        <Listing user={user} productId={id}/>
+                        <CartListing user={user} productId={id}/>
                     ))}
                 </ListingsContainer>
             </Center>

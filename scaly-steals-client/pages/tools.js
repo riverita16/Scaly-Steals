@@ -5,6 +5,7 @@ import Categories from "@/components/Categories";
 import {Product} from "@/models/Product";
 import {mongooseConnect} from "@/lib/mongoose";
 import styled from "styled-components";
+import { User } from "@/models/User";
 
 const Page = styled.div`
   background-color: rgb(250, 222, 168);
@@ -18,27 +19,30 @@ const Page = styled.div`
   padding-bottom: 100px;
 `;
 
-export default function ToolsPage({featuredProduct, tools}) {
+export default function ToolsPage({featuredProduct, tools, user}) {
   return (
     <Page>
-      <Header />
-      <Featured product={featuredProduct}/>
+      <Header user={user}/>
+      <Featured user={user?._id} product={featuredProduct}/>
       <Categories />
-      <Listings products={tools}/>
+      <Listings user={user?._id} products={tools}/>
     </Page>
   );
 }
 
 export async function getServerSideProps() {
   const featuredProductId = '6606d50f0e9cd5430ad592f9';
+  const tempUserId = '6606c52955e3c5a7c65fed2f'; // CHANGE THIS WHEN WE HAVE LOGIN
   await mongooseConnect();
   const featuredProduct = await Product.findById(featuredProductId);
   const tools = await Product.find({category: 'tools'}, null, {sort: {'_id':-1}, limit:10});
+  const user = await User.findById(tempUserId);
   
   return {
     props: {
       featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
       tools: JSON.parse(JSON.stringify(tools)),
+      user: JSON.parse(JSON.stringify(user)),
     },
   };
 }
