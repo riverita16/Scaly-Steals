@@ -2,7 +2,6 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import styled from "styled-components";
-import UserInfo from "@/components/UserInfo";
 import Header from "@/components/Header";
 import { mongooseConnect } from "@/lib/mongoose";
 import { User } from "@/models/User";
@@ -37,8 +36,8 @@ export default function cart({user}) {
     return (
         <Page>
             <Header user={user}/>
-            <h1>CART</h1>
-            <CartListings user={user} ids={productIds} />
+            <h1>Checkout</h1>
+            <CartListings user={user._id} ids={productIds} />
         </Page>
     );
 }

@@ -44,6 +44,15 @@ const StyledButton = styled.button`
         color: #fff;
         border: 1px solid #fe8181;
     `}
+    ${props => props.delete && css`
+        background-color: red;
+        color: #fff;
+        border: 1px solid red;
+
+        svg {
+            margin-right: 5px;
+        }
+    `}
     ${props => props.size === 'l' && css`
         font-size: 1.2rem;
         padding: 10px 20px;
