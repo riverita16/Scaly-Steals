@@ -1,5 +1,9 @@
 import Center from "./Center";
 import styled from "styled-components";
+const jwt = require('jsonwebtoken');
+
+const secretKey = 'pz5KtSbxXoHcmvF992DHJoqEu'; 
+const accessToken = localStorage.getItem("accessToken");
 
 const Bg = styled.div`
     background-color: #fff;
@@ -38,6 +42,21 @@ const Column = styled.div`
 `;
 
 export default function UserInfo({user}) {
+
+    let name = "";
+
+    jwt.verify(accessToken, secretKey, (err, decoded) => {
+        if (err) {
+          console.error('Failed to verify token:', err.message);
+          name = "Not logged in"
+          return;
+        }
+      
+        // Token is valid, log the decoded payload
+        console.log('Decoded payload:', decoded);
+        name = decoded.name;
+      });
+
     return (
         <Bg>
             <Center>
@@ -49,7 +68,7 @@ export default function UserInfo({user}) {
                     <Column>
                         <div>
                             <Username>
-                                {user?.name}
+                                {name}
                             </Username>
                             <Desc>
                                 we will add rating and stuff here...

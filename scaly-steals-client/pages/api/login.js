@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     if (method === "GET") {
         if (req.query?.email) {
             console.log(1);
-            res.json(await User.findOne({email:req.query.email}));
+            res.json(await User.findOne({ email: req.query.email }));
         } else {
             console.log(2);
             res.json(await User.find());
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         const userDoc = await User.create({
             name, email, password
         });
-        await User.findOneAndUpdate({name: {name}}, {email: {email}}, {password: {password}}, {phone: ""}, {image: ""}, {products: []});
+        await User.findOneAndUpdate({name: name}, {email: email}, {password: password}, {phone: ""}, {image: ""}, {products: []});
         res.json(userDoc);
     }
 
