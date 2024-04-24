@@ -22,9 +22,9 @@ export default function ToolsPage({featuredProduct, tools, user}) {
   return (
     <Page>
       <Header user={user}/>
-      <Featured product={featuredProduct}/>
+      <Featured user={user?._id} product={featuredProduct}/>
       <Categories />
-      <Listings products={tools}/>
+      <Listings user={user?._id} products={tools}/>
     </Page>
   );
 }

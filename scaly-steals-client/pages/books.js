@@ -22,9 +22,9 @@ export default function BooksPage({featuredProduct, books, user}) {
   return (
     <Page>
       <Header user={user}/>
-      <Featured product={featuredProduct}/>
+      <Featured user={user?._id} product={featuredProduct}/>
       <Categories />
-      <Listings products={books}/>
+      <Listings user={user?._id} products={books}/>
     </Page>
   );
 }

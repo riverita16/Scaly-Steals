@@ -23,9 +23,9 @@ export default function HomePage({featuredProduct, allProducts, user}) {
   return (
     <Page>
       <Header user={user}/>
-      <Featured product={featuredProduct}/>
+      <Featured user={user?._id} product={featuredProduct}/>
       <Categories />
-      <Listings products={allProducts}/>
+      <Listings user={user?._id} products={allProducts}/>
     </Page>
   );
 }
@@ -37,7 +37,7 @@ export async function getServerSideProps() {
   const featuredProduct = await Product.findById(featuredProductId);
   const allProducts = await Product.find({}, null, {sort: {'_id':-1}, limit:10})
   const user = await User.findById(tempUserId);
-  
+
   return {
     props: {
       featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),

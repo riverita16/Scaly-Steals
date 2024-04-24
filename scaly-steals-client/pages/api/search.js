@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     ];
   }
  
-  console.log(productsQuery);
+  // console.log(productsQuery);
   res.json(await Product.find(
     productsQuery,
     null,

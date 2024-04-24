@@ -22,9 +22,9 @@ export default function VehiclesPage({featuredProduct, vehicles, user}) {
   return (
     <Page>
       <Header user={user}/>
-      <Featured product={featuredProduct}/>
+      <Featured user={user?._id} product={featuredProduct}/>
       <Categories />
-      <Listings products={vehicles}/>
+      <Listings user={user?._id} products={vehicles}/>
     </Page>
   );
 }

@@ -15,7 +15,9 @@ const UserSchema = new Schema({
     password: String,
     phone: String,
     image: String,
-    products: [{type:String}]
+    products: [{type:String}],
+    liked: [{type:String}],
+    cart: [{type:String}]
 },{ 
   timestamps: true 
 });

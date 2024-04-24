@@ -55,6 +55,7 @@ const SearchBar = styled(Link)`
     margin-left: 10px;
     margin-right: 10px;
     display: flex;
+    text-decoration: none;
 
     svg {
         width: 20px;
@@ -145,7 +146,7 @@ export default function SearchPage({user}) {
                 </Wrapper>
             </Center>
         </StyledHeader>
-      <Listings products={product}/>
+      <Listings user={user?._id} products={product}/>
     </Page>
   );
 }

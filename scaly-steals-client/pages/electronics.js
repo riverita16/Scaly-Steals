@@ -22,9 +22,9 @@ export default function ElectronicsPage({featuredProduct, electronics, user}) {
   return (
     <Page>
       <Header user={user}/>
-      <Featured product={featuredProduct}/>
+      <Featured user={user?._id} product={featuredProduct}/>
       <Categories />
-      <Listings products={electronics}/>
+      <Listings user={user?._id} products={electronics}/>
     </Page>
   );
 }
