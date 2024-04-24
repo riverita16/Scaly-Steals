@@ -20,6 +20,12 @@ const Page = styled.div`
   padding-bottom: 100px;
 `;
 
+const WishlistContainer = styled.div`
+    font-size: 80px;
+    color: #037017;
+    font-family: "jersey 10"
+`;
+
 export default function saved({user}) {
     const router = useRouter();
     const [productIds, setProductIds] = useState();
@@ -37,7 +43,8 @@ export default function saved({user}) {
     return (
         <Page>
             <Header user={user}/>
-            <h1>LIKED</h1>
+            <WishlistContainer>Wishlist</WishlistContainer>
+            <WishlistContainer>-------------------------</WishlistContainer>
             <UserListings user={user._id} ids={productIds} />
         </Page>
     );
