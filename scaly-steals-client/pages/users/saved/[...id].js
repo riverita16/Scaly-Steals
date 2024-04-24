@@ -21,7 +21,7 @@ const Page = styled.div`
 `;
 
 const WishlistContainer = styled.div`
-    font-size: 80px;
+    font-size: 70px;
     color: #037017;
     font-family: "jersey 25"
 `;
@@ -43,7 +43,7 @@ export default function saved({user}) {
     return (
         <Page>
             <Header user={user}/>
-            <WishlistContainer>Wishlist</WishlistContainer>
+            <WishlistContainer>✧･ﾟ: *✧･ﾟ:*   Wishlist   ✧･ﾟ: *✧･ﾟ:*</WishlistContainer>
             <WishlistContainer>-------------------------</WishlistContainer>
             <UserListings user={user._id} ids={productIds} />
         </Page>

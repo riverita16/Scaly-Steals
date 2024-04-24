@@ -21,7 +21,7 @@ const Page = styled.div`
 `;
 
 const CartFont = styled.div`
-    font-size: 80px;
+    font-size: 65px;
     color: #037017;
     font-family: "jersey 25"
 `;
@@ -44,7 +44,7 @@ export default function cart({user}) {
         <Page>
             <Header user={user}/>
             <CartFont>Cart</CartFont>
-            <CartFont>------------------</CartFont>
+            <CartFont>তততততততততততততততততততত</CartFont>
             <CartListings user={user} ids={productIds} />
         </Page>
     );
