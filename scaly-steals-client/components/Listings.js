@@ -4,6 +4,11 @@ import Button from "./Button";
 import ButtonLink from "./ButtonLink";
 import axios from "axios";
 import { useRouter } from "next/router";
+const jwt = require('jsonwebtoken');
+import {useEffect, useState} from "react";
+
+const secretKey = 'pz5KtSbxXoHcmvF992DHJoqEu'; 
+
 
 const Bg = styled.div`
     background-color: #3EB489;
@@ -61,13 +66,37 @@ const ButtonWrapper = styled.div`
 `;
 
 export default function Listings({user, products}) {
+
+    const [userId, setUserId] = useState("");
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem("accessToken");
+        if (!accessToken) {
+            console.log("Access token not found in localStorage");
+            return;
+        }
+
+        jwt.verify(accessToken, secretKey, (err, decoded) => {
+            if (err) {
+                console.error('Failed to verify token:', err.message);
+                return;
+            }
+            
+            setUserId(decoded._id);
+            console.log(userId);
+        });
+    }, []);
+
     async function saveProduct(id) {
-        const data = { id, user };
+        const data = { id, userId };
+        console.log(userId);
         await axios.post('/api/saved', data);
     }
 
     async function addToCart(id) {
-        const data = { id, user };
+        const data = { id, userId };
+        console.log(userId);
+        console.log(id);
         await axios.post('/api/cart', data);
     }
 

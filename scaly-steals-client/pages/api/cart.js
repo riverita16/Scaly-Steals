@@ -17,8 +17,11 @@ export default async function handler(req, res) {
 
     // add to cart
     if (method === "POST") {
-        const {id, user} = req.body;
-        await User.findOneAndUpdate({_id: new ObjectId(user)}, {$push : {cart:id}});
+        console.log("km");
+        const {id, userId} = req.body;
+        console.log(id);
+        console.log(userId);
+        await User.findOneAndUpdate({_id: new ObjectId(userId)}, {$push : {cart: id}});
         res.json(true);
     }
 

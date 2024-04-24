@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import Center from "./Center";
 import Listing from "./Listing";
+import { useEffect, useState } from 'react';
+const jwt = require('jsonwebtoken');
+
+
+
+const secretKey = 'pz5KtSbxXoHcmvF992DHJoqEu'; 
+
 
 const Bg = styled.div`
     background-color: #3EB489;
@@ -18,13 +25,31 @@ const ListingsContainer = styled.div`
 `;
 
 export default function UserListings({user, ids}) {
+
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem("accessToken");
+        if (!accessToken) {
+            console.log("Access token not found in localStorage");
+            return;
+        }
+
+        jwt.verify(accessToken, secretKey, (err, decoded) => {
+            if (err) {
+                console.error('Failed to verify token:', err.message);
+                return;
+            }
+            
+            setItems(decoded.products);
+        });
+    }, []);
+
     return (
         <Bg>
             <Center>
                 <ListingsContainer>
-                    {ids?.map(id => (
-                        <Listing user={user} productId={id}/>
-                    ))}
+                    {items}
                 </ListingsContainer>
             </Center>
         </Bg>

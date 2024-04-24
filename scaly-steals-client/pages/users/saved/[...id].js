@@ -6,6 +6,10 @@ import Header from "@/components/Header";
 import UserListings from "@/components/UserListings";
 import { mongooseConnect } from "@/lib/mongoose";
 import { User } from "@/models/User";
+const jwt = require('jsonwebtoken');
+
+const secretKey = 'pz5KtSbxXoHcmvF992DHJoqEu'; 
+
 
 const Page = styled.div`
   background-color: rgb(250, 222, 168);
@@ -20,6 +24,27 @@ const Page = styled.div`
 `;
 
 export default function saved({user}) {
+
+    const [userId, setUserId] = useState("");
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem("accessToken");
+        if (!accessToken) {
+            console.log("Access token not found in localStorage");
+            return;
+        }
+
+        jwt.verify(accessToken, secretKey, (err, decoded) => {
+            if (err) {
+                console.error('Failed to verify token:', err.message);
+                return;
+            }
+            
+            setUserId(decoded._id);
+            console.log(userId);
+        });
+    }, []);
+
     const router = useRouter();
     const [productIds, setProductIds] = useState();
     const {id} = router.query;
@@ -37,7 +62,7 @@ export default function saved({user}) {
         <Page>
             <Header user={user}/>
             <h1>LIKED</h1>
-            <UserListings user={user._id} ids={productIds} />
+            <UserListings user={userId} ids={productIds} />
         </Page>
     );
 }

@@ -1,5 +1,12 @@
-import Center from "./Center";
+import { useEffect, useState } from 'react';
 import styled from "styled-components";
+import axios from "axios";
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+import Center from "./Center";
+
+const secretKey = 'pz5KtSbxXoHcmvF992DHJoqEu'; 
+// const accessToken = localStorage.getItem("accessToken");
 
 const Bg = styled.div`
     background-color: #fff;
@@ -38,6 +45,26 @@ const Column = styled.div`
 `;
 
 export default function UserInfo({user}) {
+
+    const [name, setName] = useState("Not logged in");
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem("accessToken");
+        if (!accessToken) {
+            console.log("Access token not found in localStorage");
+            return;
+        }
+
+        jwt.verify(accessToken, secretKey, (err, decoded) => {
+            if (err) {
+                console.error('Failed to verify token:', err.message);
+                return;
+            }
+            
+            setName(decoded.name);
+        });
+    }, []);
+
     return (
         <Bg>
             <Center>
@@ -49,7 +76,7 @@ export default function UserInfo({user}) {
                     <Column>
                         <div>
                             <Username>
-                                {user?.name}
+                                {name}
                             </Username>
                             <Desc>
                                 we will add rating and stuff here...
