@@ -44,6 +44,13 @@ const StyledButton = styled.button`
         color: #fff;
         border: 1px solid #fe8181;
     `}
+    ${props => props.pay && css`
+        width: auto;
+        background-color: #fff;
+        color: #89CFF0;
+        border: 1px solid #fff;
+        font-size: 1.2rem;
+    `}
     ${props => props.delete && css`
         background-color: red;
         color: #fff;

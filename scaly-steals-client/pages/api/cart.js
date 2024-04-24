@@ -7,6 +7,14 @@ export default async function handler(req, res) {
     const {method} = req;
     await mongooseConnect();
 
+    // get cart total
+    if (method === "GET") {
+        const {user} = req.body;
+        const u = await User.findById(user);
+        console.log(u?._id);
+        res.json(true);
+    }
+
     // add to cart
     if (method === "POST") {
         const {id, user} = req.body;

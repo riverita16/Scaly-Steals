@@ -3,7 +3,7 @@ import Center from "./Center";
 import CartListing from "./CartListing";
 
 const Bg = styled.div`
-    background-color: #3EB489;
+    background-color: #89CFF0;
     color: #fff;
     padding: 20px 0;
     width: 90%;
