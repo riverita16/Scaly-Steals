@@ -113,7 +113,7 @@ export default function Login() {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
   
-    axios.post("/api/login", { name: userName, email: userEmail, password: hashedPassword }).then(res => {
+    axios.post("/api/login", { name: userName, email: userEmail, password: hashedPassword, phone: "", image: "", products: [], liked: [], cart: [] }).then(res => {
       console.log(res);
     });
   }

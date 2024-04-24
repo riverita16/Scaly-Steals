@@ -8,6 +8,10 @@ import { User } from "@/models/User";
 import CartListings from "@/components/CartListings";
 import Center from "@/components/Center";
 import Button from "@/components/Button";
+const jwt = require('jsonwebtoken');
+
+const secretKey = 'pz5KtSbxXoHcmvF992DHJoqEu'; 
+
 
 const Page = styled.div`
   background-color: rgb(250, 222, 168);
@@ -44,11 +48,32 @@ const Wrapper = styled.div`
 `;
 
 export default function cart({user}) {
+
+    const [id, setId] = useState("");
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem("accessToken");
+        if (!accessToken) {
+            console.log("Access token not found in localStorage");
+            return;
+        }
+
+        jwt.verify(accessToken, secretKey, (err, decoded) => {
+            if (err) {
+                console.error('Failed to verify token:', err.message);
+                return;
+            }
+            
+            setId(decoded._id);
+        });
+    }, []);
+
+
     const router = useRouter();
     const [productIds, setProductIds] = useState([]);
     const [total, setTotal] = useState(0);
 
-    const {id} = router.query;
+    // const {id} = router.query;
     useEffect(() => {
         if (!id) {
             return;
@@ -74,13 +99,13 @@ export default function cart({user}) {
 
     return (
         <Page>
-            <Header user={user}/>
+            <Header user={id}/>
             <Block>
                 <Center>
                     <h1>Checkout</h1>
                 </Center>
             </Block>
-            <CartListings user={user._id} ids={productIds}/>
+            <CartListings user={id} ids={productIds}/>
             <Bottom>
                 <Center>
                     <h3>Total: ${total}</h3>

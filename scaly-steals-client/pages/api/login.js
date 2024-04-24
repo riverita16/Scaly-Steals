@@ -19,11 +19,12 @@ export default async function handler(req, res) {
     }
 
     if (method === "POST") {
-        const {name, email, password} = req.body;
+        const { name, email, password, phone, image, products, liked, cart } = req.body;
+        console.log(cart);
         const userDoc = await User.create({
-            name, email, password
+            name, email, password, phone, image, products, liked, cart
         });
-        await User.findOneAndUpdate({name: name}, {email: email}, {password: password}, {phone: ""}, {image: ""}, {products: []});
+        await User.findOneAndUpdate({name: name}, {email: email}, {password: password}, {phone: phone}, {image: image}, {products: products}, {liked: liked}, {cart: cart});
         res.json(userDoc);
     }
 
