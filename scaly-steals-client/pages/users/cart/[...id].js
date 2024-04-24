@@ -20,6 +20,12 @@ const Page = styled.div`
   padding-bottom: 100px;
 `;
 
+const CartFont = styled.div`
+    font-size: 80px;
+    color: #037017;
+    font-family: "jersey 25"
+`;
+
 export default function cart({user}) {
     const router = useRouter();
     const [productIds, setProductIds] = useState();
@@ -37,7 +43,8 @@ export default function cart({user}) {
     return (
         <Page>
             <Header user={user}/>
-            <h1>CART</h1>
+            <CartFont>Cart</CartFont>
+            <CartFont>------------------</CartFont>
             <CartListings user={user} ids={productIds} />
         </Page>
     );

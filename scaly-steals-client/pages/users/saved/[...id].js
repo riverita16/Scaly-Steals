@@ -23,7 +23,7 @@ const Page = styled.div`
 const WishlistContainer = styled.div`
     font-size: 80px;
     color: #037017;
-    font-family: "jersey 10"
+    font-family: "jersey 25"
 `;
 
 export default function saved({user}) {
