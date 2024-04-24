@@ -17,13 +17,13 @@ const ListingsContainer = styled.div`
     gap: 10px;
 `;
 
-export default function UserListings({ids}) {
+export default function UserListings({user, ids}) {
     return (
         <Bg>
             <Center>
                 <ListingsContainer>
                     {ids?.map(id => (
-                        <Listing productId={id}/>
+                        <Listing user={user} productId={id}/>
                     ))}
                 </ListingsContainer>
             </Center>

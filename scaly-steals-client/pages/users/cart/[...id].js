@@ -38,7 +38,7 @@ export default function cart({user}) {
         <Page>
             <Header user={user}/>
             <h1>CART</h1>
-            <CartListings ids={productIds} />
+            <CartListings user={user} ids={productIds} />
         </Page>
     );
 }

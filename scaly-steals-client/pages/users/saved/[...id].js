@@ -38,7 +38,7 @@ export default function saved({user}) {
         <Page>
             <Header user={user}/>
             <h1>LIKED</h1>
-            <UserListings ids={productIds} />
+            <UserListings user={user._id} ids={productIds} />
         </Page>
     );
 }

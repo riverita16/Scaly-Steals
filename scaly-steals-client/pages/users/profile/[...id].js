@@ -40,7 +40,7 @@ export default function profile({user}) {
         <Page>
             <Header  user={user}/>
             <UserInfo user={userInfo} />
-            <UserListings ids={productIds} />
+            <UserListings user={user._id} ids={productIds} />
         </Page>
     );
 }
