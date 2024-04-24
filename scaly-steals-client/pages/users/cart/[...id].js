@@ -4,9 +4,9 @@ import axios from "axios";
 import styled from "styled-components";
 import UserInfo from "@/components/UserInfo";
 import Header from "@/components/Header";
-import UserListings from "@/components/UserListings";
 import { mongooseConnect } from "@/lib/mongoose";
 import { User } from "@/models/User";
+import CartListings from "@/components/CartListings";
 
 const Page = styled.div`
   background-color: rgb(250, 222, 168);
@@ -20,7 +20,7 @@ const Page = styled.div`
   padding-bottom: 100px;
 `;
 
-export default function saved({user}) {
+export default function cart({user}) {
     const router = useRouter();
     const [productIds, setProductIds] = useState();
     const {id} = router.query;
@@ -30,15 +30,15 @@ export default function saved({user}) {
         }
 
         axios.get('/api/users?id='+id).then(response => {
-            setProductIds(response.data.liked);
+            setProductIds(response.data.cart);
         });
     }, [id]);
 
     return (
         <Page>
             <Header user={user}/>
-            <h1>LIKED</h1>
-            <UserListings ids={productIds} />
+            <h1>CART</h1>
+            <CartListings ids={productIds} />
         </Page>
     );
 }

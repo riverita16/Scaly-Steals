@@ -5,6 +5,7 @@ import Categories from "@/components/Categories";
 import {Product} from "@/models/Product";
 import {mongooseConnect} from "@/lib/mongoose";
 import styled from "styled-components";
+import { User } from "@/models/User";
 
 const Page = styled.div`
   background-color: rgb(250, 222, 168);

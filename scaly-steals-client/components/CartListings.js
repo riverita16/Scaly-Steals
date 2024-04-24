@@ -17,7 +17,7 @@ const ListingsContainer = styled.div`
     gap: 10px;
 `;
 
-export default function UserListings({ids}) {
+export default function CartListings({ids}) {
     return (
         <Bg>
             <Center>
