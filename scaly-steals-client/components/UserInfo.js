@@ -1,9 +1,12 @@
-import Center from "./Center";
+import { useEffect, useState } from 'react';
 import styled from "styled-components";
+import axios from "axios";
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+import Center from "./Center";
 
 const secretKey = 'pz5KtSbxXoHcmvF992DHJoqEu'; 
-const accessToken = localStorage.getItem("accessToken");
+// const accessToken = localStorage.getItem("accessToken");
 
 const Bg = styled.div`
     background-color: #fff;
@@ -43,19 +46,24 @@ const Column = styled.div`
 
 export default function UserInfo({user}) {
 
-    let name = "";
+    const [name, setName] = useState("Not logged in");
 
-    jwt.verify(accessToken, secretKey, (err, decoded) => {
-        if (err) {
-          console.error('Failed to verify token:', err.message);
-          name = "Not logged in"
-          return;
+    useEffect(() => {
+        const accessToken = localStorage.getItem("accessToken");
+        if (!accessToken) {
+            console.log("Access token not found in localStorage");
+            return;
         }
-      
-        // Token is valid, log the decoded payload
-        console.log('Decoded payload:', decoded);
-        name = decoded.name;
-      });
+
+        jwt.verify(accessToken, secretKey, (err, decoded) => {
+            if (err) {
+                console.error('Failed to verify token:', err.message);
+                return;
+            }
+            
+            setName(decoded.name);
+        });
+    }, []);
 
     return (
         <Bg>
