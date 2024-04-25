@@ -16,26 +16,26 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 
 ## TODOS
 Client front:
-- make like button change on click etc
-- create listing button
-- saved, cart page
-- add to cart functionality
 - allow managing of sort and limit in server side props
 - add profile ratings
 - fix text display fitting on listing
 - apply template
 - fix clothing and vehicle svgs
 
-Sign up backend (copy from admin panel):
-- implement sign in with other credentials
-  - check for ufl email
-  - add verify password field
-
 Admin panel:
 - allow removing images
 - fix photo preview for products (refresh for initial upload)
 
 ## Latest Updates (latest first)
+Sign up backend (copy from admin panel):
+- implement sign in with other credentials
+  - check for ufl email
+  - add verify password field
+
+- make like button change on click etc
+- create listing button
+- saved, cart page
+- add to cart functionality
 - added like button
 - fixed issue accessing profile page
 - profile page displays user info and listings
