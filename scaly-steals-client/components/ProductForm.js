@@ -58,7 +58,7 @@ export default function ProductForm({
     }
 
     if (goToProducts) {
-        router.push('/profile'+user);
+        router.push('user/profile/'+user);
     }
 
     async function uploadImages(ev) {

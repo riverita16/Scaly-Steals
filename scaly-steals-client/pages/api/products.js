@@ -54,7 +54,7 @@ export default async function handler(req, res) {
         const productDoc = await Product.create({
             title,description,user,price,images,category
         });
-
+        const id = (JSON.parse(JSON.stringify(productDoc)))._id;
         await User.findOneAndUpdate({_id: {user}}, {$push : {products: {id}}});
         res.json(productDoc);
 

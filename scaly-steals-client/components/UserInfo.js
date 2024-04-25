@@ -4,6 +4,7 @@ import axios from "axios";
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 import Center from "./Center";
+import ButtonLink from './ButtonLink';
 
 const secretKey = 'pz5KtSbxXoHcmvF992DHJoqEu'; 
 // const accessToken = localStorage.getItem("accessToken");
@@ -47,6 +48,8 @@ const Column = styled.div`
 export default function UserInfo({user}) {
 
     const [name, setName] = useState("Not logged in");
+    const [id, setId] = useState();
+
 
     useEffect(() => {
         const accessToken = localStorage.getItem("accessToken");
@@ -62,6 +65,7 @@ export default function UserInfo({user}) {
             }
             
             setName(decoded.name);
+            setId(decoded._id)
         });
     }, []);
 
@@ -81,6 +85,7 @@ export default function UserInfo({user}) {
                             <Desc>
                                 we will add rating and stuff here...
                             </Desc>
+                            <ButtonLink reg primary href={'/users/products/'+id}>Create Listing</ButtonLink>
                         </div>
                     </Column>
                 </ColumnsWrapper>
