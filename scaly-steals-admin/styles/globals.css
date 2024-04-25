@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input, textarea {
+    @apply border border-gray-300 rounded-md px-1 w-full;
+    @apply mb-2;
+    @apply text-black
+}
+
+input:focus, textarea:focus {
+    @apply border-green-700;
+}
+
+h1 {
+    @apply mb-2 text-xl;
+}
+
+.btn-primary {
+    @apply bg-white text-blue-900 py-1 px-4 rounded-md;
+}
+
+table.basic {
+    @apply w-full;
+}
+
+table.basic thead tr td {
+    @apply bg-green-700;
+}
+
+table.basic tr td{
+    @apply border border-green-700 p-1;
+}

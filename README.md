@@ -1,6 +1,66 @@
 # Scaly Steals
 Better and more secure alternative to Craigslist and Facebook Marketplace for fellow Gators.
 
+# Setup
+### First Time
+1. Install `npm` or `npx`
+2. Run `npm install -g yarn`
+3. `cd` to ./scaly-steals-admin/
+4. Run `yarn install`
+5. Ensure `.env` file is set up with proper credentials
+6. Run `yarn dev`
+7. Redo steps 4-6 in another terminal for ./scaly-steals-client/
+
+### To start app on localhost
+`yarn dev`
+
+## TODOS
+Client front:
+- make like button change on click etc
+- create listing button
+- saved, cart page
+- add to cart functionality
+- allow managing of sort and limit in server side props
+- add profile ratings
+- fix text display fitting on listing
+- apply template
+- fix clothing and vehicle svgs
+
+Sign up backend (copy from admin panel):
+- implement sign in with other credentials
+  - check for ufl email
+  - add verify password field
+
+Admin panel:
+- allow removing images
+- fix photo preview for products (refresh for initial upload)
+
+## Latest Updates (latest first)
+- added like button
+- fixed issue accessing profile page
+- profile page displays user info and listings
+- add user id to product schema
+- add product id to list in user schema
+- implement see more pages
+- add price
+- display all listings
+- client has navbar and search bar template set up
+- displays one of the listings
+- can sign out (admin panel)
+- fix edit and delete buttons in categories and products page (admin panel)
+- backend communicates with AWS bucket for image storage
+- Some proof of concept stuff completed:
+  - mongodb set up
+  - web app communicates with db
+  - admin panel view in the works (scaly-steals-admin)
+    - can create categories
+  - client view template in progress (scaly-steals-client)
+
+*Important Notes*
+Functionality requires Google Cloud credentials and MongoDB URI which are not pushed to the repository.
+
+Also requires AWS for image persistent storage.
+
 ## Functionality
 - Communication between users (Chat)
   - email notficiation (configurable)
@@ -31,8 +91,7 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 
 ### Front-end
 - JavaScript
-  - React
-  - Express
+  - Next.js
   - npm
  
 - Home page
@@ -40,8 +99,8 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
   - terms of service (we are not liable)
 
 ### Back-end
-- Python
-  - Relational db: MySQL
+- Mongodb
+- Axios
 - Socket.io
 
 ### Workflow

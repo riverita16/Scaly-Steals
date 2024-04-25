@@ -1,0 +1,39 @@
+{
+  "name": "admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@auth/mongodb-adapter": "^2.4.0",
+    "@aws-sdk/client-s3": "^3.540.0",
+    "aws-sdk": "^2.1588.0",
+    "axios": "^1.6.7",
+    "fs": "^0.0.1-security",
+    "googleapis": "^134.0.0",
+    "mime-types": "^2.1.35",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.2.0",
+    "multiparty": "^4.2.3",
+    "next": "14.1.0",
+    "next-auth": "^4.24.6",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-sortablejs": "^6.1.4",
+    "react-spinners": "^0.13.8",
+    "realm": "^12.6.2",
+    "sortablejs": "^1.15.2",
+    "styled-components": "^6.1.8"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
+  }
+}
