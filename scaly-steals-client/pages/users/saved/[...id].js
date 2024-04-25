@@ -10,7 +10,6 @@ const jwt = require('jsonwebtoken');
 
 const secretKey = 'pz5KtSbxXoHcmvF992DHJoqEu'; 
 
-
 const Page = styled.div`
   background-color: rgb(250, 222, 168);
   height: 100vh;
@@ -25,7 +24,7 @@ const Page = styled.div`
 
 export default function saved({user}) {
 
-    const [userId, setUserId] = useState("");
+    const [id, setId] = useState("");
 
     useEffect(() => {
         const accessToken = localStorage.getItem("accessToken");
@@ -40,32 +39,32 @@ export default function saved({user}) {
                 return;
             }
             
-            setUserId(decoded._id);
-            console.log(userId);
+            setId(decoded._id);
         });
     }, []);
 
-    const router = useRouter();
-    const [productIds, setProductIds] = useState();
-    const {id} = router.query;
+    const [productIds, setProductIds] = useState([]);
+
     useEffect(() => {
         if (!id) {
             return;
         }
 
-        axios.get('/api/users?id='+id).then(response => {
-            setProductIds(response.data.liked);
-        });
+        axios.get(`/api/users?id=${id}`).then(response => {
+            setProductIds(response.data.liked || []);
+        }).catch(error => console.error('Error fetching user cart:', error));
     }, [id]);
 
     return (
         <Page>
-            <Header user={user}/>
+            <Header user={id}/>
             <h1>LIKED</h1>
-            <UserListings user={userId} ids={productIds} />
+            <UserListings user={id} ids={productIds} />
         </Page>
     );
 }
+
+// NOT IN USE
 
 export async function getServerSideProps() {
     const tempUserId = '6606c52955e3c5a7c65fed2f'; // CHANGE THIS WHEN WE HAVE LOGIN

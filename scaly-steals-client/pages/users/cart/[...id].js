@@ -116,6 +116,8 @@ export default function cart({user}) {
     );
 }
 
+// NOT IN USE
+
 export async function getServerSideProps() {
     const tempUserId = '6606c52955e3c5a7c65fed2f'; // CHANGE THIS WHEN WE HAVE LOGIN
     await mongooseConnect();

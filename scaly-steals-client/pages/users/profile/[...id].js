@@ -7,6 +7,9 @@ import Header from "@/components/Header";
 import UserListings from "@/components/UserListings";
 import { mongooseConnect } from "@/lib/mongoose";
 import { User } from "@/models/User";
+const jwt = require('jsonwebtoken');
+
+const secretKey = 'pz5KtSbxXoHcmvF992DHJoqEu'; 
 
 const Page = styled.div`
   background-color: rgb(250, 222, 168);
@@ -21,10 +24,30 @@ const Page = styled.div`
 `;
 
 export default function profile({user}) {
+    const [id, setId] = useState("");
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem("accessToken");
+        if (!accessToken) {
+            console.log("Access token not found in localStorage");
+            return;
+        }
+
+        jwt.verify(accessToken, secretKey, (err, decoded) => {
+            if (err) {
+                console.error('Failed to verify token:', err.message);
+                return;
+            }
+            
+            setId(decoded._id);
+        });
+    }, []);
+
     const router = useRouter();
     const [userInfo,setUserInfo] = useState();
     const [productIds, setProductIds] = useState();
-    const {id} = router.query;
+    // const {id} = router.query;
+
     useEffect(() => {
         if (!id) {
             return;
@@ -44,6 +67,7 @@ export default function profile({user}) {
         </Page>
     );
 }
+// NOT IN USE
 
 export async function getServerSideProps() {
     const tempUserId = '6606c52955e3c5a7c65fed2f'; // CHANGE THIS WHEN WE HAVE LOGIN

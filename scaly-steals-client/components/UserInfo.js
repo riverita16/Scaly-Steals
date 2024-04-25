@@ -71,7 +71,7 @@ export default function UserInfo({user}) {
                 <ColumnsWrapper>
                     <Column>
                     {/* {user?.images} */}
-                        <img src='/images/testpfp.JPG' alt=""/>
+                        <img src='/images/testpfp.jpeg' alt=""/>
                     </Column>
                     <Column>
                         <div>

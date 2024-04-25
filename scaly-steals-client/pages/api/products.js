@@ -1,5 +1,6 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
+import { User } from "@/models/User";
 import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
@@ -47,6 +48,22 @@ export default async function handler(req, res) {
         } catch (error) {
             console.error("Error fetching products:", error);
             res.status(500).send({ message: "Internal server error" });
+        }
+    } else if (method === "PUT") {
+        const {title,description,user,price,images,category} = req.body;
+        const productDoc = await Product.create({
+            title,description,user,price,images,category
+        });
+
+        await User.findOneAndUpdate({_id: {user}}, {$push : {products: {id}}});
+        res.json(productDoc);
+
+    } else if (method === 'DELETE') {
+        const {user,_id} = req.body;
+        if (req.query?.id) {
+            await Product.deleteOne({_id:req.query?.id});
+            await User.findOneAndUpdate({_id: {user}}, {$pull : {products: {_id}}});
+            res.json(true);
         }
     } else {
         res.status(405).send({ message: "Method not allowed" });

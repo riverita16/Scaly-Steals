@@ -18,6 +18,74 @@ const Page = styled.div`
   padding-bottom: 100px;
 `;
 
+const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  button {
+    padding: 8px 16px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  button {
+    width: 100%;
+  }
+`;
+
+const Button = styled.button`
+  padding: 8px 16px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+  font-size: 14px;
+`;
+
+const SuccessMessage = styled.p`
+  color: black;
+  font-size: 14px;
+`;
+
 // async function handleSubmit(e) {
 //   e.preventDefault();
 
@@ -41,6 +109,11 @@ const Page = styled.div`
 // }
 
 export default function Login() {
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
+
   // useEffect(() => {
   //   axios.get('api/login').then(res => {
   //     console.log(res.data);
@@ -68,6 +141,7 @@ export default function Login() {
       if (await bcrypt.compare(password, res.data.password)) {
         console.log("Successful");
         loggedIn = true;
+        setSuccessMessage("Logged in successfully!");
       } else {
         console.log("Not Successful");
       }
@@ -97,6 +171,12 @@ export default function Login() {
   //   })
   // }
 
+  const [formType, setFormType] = useState('');
+
+  const handleFormChange = (type) => {
+    setFormType(type);
+  };
+
   async function handleSignUp(event) {
     event.preventDefault();
   
@@ -106,32 +186,47 @@ export default function Login() {
     const password = formData.get('password');
 
     if (!userEmail.endsWith("@ufl.edu")) {
-      console.log("Email must end with '@ufl.edu'");
+      setErrorMessage("Email must end with '@ufl.edu'");
       return; // Exit the function if the email format is incorrect
-  }
+    }
   
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
   
     axios.post("/api/login", { name: userName, email: userEmail, password: hashedPassword, phone: "", image: "", products: [], liked: [], cart: [] }).then(res => {
       console.log(res);
+      setErrorMessage("");
+      setSuccessMessage("Signed up successfully!");
     });
   }
 
   return (
     <Page>
-      <form onSubmit={handleLogIn}>
-        <input type="email" name="email" placeholder="UFL Email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <button type="submit">Log In</button>
-      </form>
-      <form onSubmit={handleSignUp}>
-        <input type="text" name="name" placeholder="Name" required />
-        <input type="email" name="email" placeholder="UFL Email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <button type="submit">Sign Up</button>
-      </form>
-      {/* <p>{message}</p> */}
+      <ButtonGroup>
+        <button onClick={() => handleFormChange('login')}>Log In</button>
+        <button onClick={() => handleFormChange('signup')}>Sign Up</button>
+      </ButtonGroup>
+
+      {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+
+
+      {formType === 'login' && (
+        <Form onSubmit={handleLogIn}>
+          <input type="email" name="email" placeholder="UFL Email" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <Button type="submit">Log In</Button>
+        </Form>
+      )}
+
+      {formType === 'signup' && (
+        <Form onSubmit={handleSignUp}>
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="email" name="email" placeholder="UFL Email" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <Button type="submit">Sign Up</Button>
+        </Form>
+      )}
     </Page>
   );
 }

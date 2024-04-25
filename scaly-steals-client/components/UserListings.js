@@ -25,31 +25,13 @@ const ListingsContainer = styled.div`
 `;
 
 export default function UserListings({user, ids}) {
-
-    const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        const accessToken = localStorage.getItem("accessToken");
-        if (!accessToken) {
-            console.log("Access token not found in localStorage");
-            return;
-        }
-
-        jwt.verify(accessToken, secretKey, (err, decoded) => {
-            if (err) {
-                console.error('Failed to verify token:', err.message);
-                return;
-            }
-            
-            setItems(decoded.products);
-        });
-    }, []);
-
     return (
         <Bg>
             <Center>
                 <ListingsContainer>
-                    {items}
+                    {ids?.map(id => (
+                        <Listing user={user} productId={id}/>
+                    ))}
                 </ListingsContainer>
             </Center>
         </Bg>

@@ -30,12 +30,14 @@ export default function HomePage({featuredProduct, allProducts, user}) {
   );
 }
 
+// NOT IN USE
+
 export async function getServerSideProps() {
   const featuredProductId = '6606d50f0e9cd5430ad592f9';
   const tempUserId = '6606c52955e3c5a7c65fed2f'; // CHANGE THIS WHEN WE HAVE LOGIN
   await mongooseConnect();
   const featuredProduct = await Product.findById(featuredProductId);
-  const allProducts = await Product.find({}, null, {sort: {'_id':-1}, limit:10})
+  const allProducts = await Product.find({}, null, {limit:10})
   const user = await User.findById(tempUserId);
 
   return {
