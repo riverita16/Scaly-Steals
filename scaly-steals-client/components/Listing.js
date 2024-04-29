@@ -45,19 +45,20 @@ const ButtonWrapper = styled.div`
     margin-top: 25px;
 `;
 
-export default function Listing({user, productId}) {
+export default function Listing({userId, productId}) {
     const [product, setProduct] = useState();
     const router = useRouter();
 
     async function saveProduct(id) {
-        const data = { id, user };
+        const data = { id, userId };
         await axios.post('/api/saved', data);
-        router.replace(router.asPath);
+        router.reload();
     }
 
     async function addToCart(id) {
-        const data = { id, user };
+        const data = { id, userId };
         await axios.post('/api/cart', data);
+
     }
 
     useEffect(() => {

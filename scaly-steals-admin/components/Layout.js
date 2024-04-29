@@ -57,16 +57,6 @@ export default function Layout({children}) {
             <h3 className="text-white">User Login</h3>
         </div>
         <Divider />
-        <LogInForm className="py-1.5" onSubmit={login}>
-            <label>UFL Email</label>
-            <input type="text" placeholder="example@ufl.edu" value={email} onChange={ev => setEmail(ev.target.value)}/>
-            <label>Password</label>
-            <input type="password" placeholder="password" value={password} onChange={ev => setPassword(ev.target.value)}></input>    
-            <button type="submit" className="bg-white p-2 px-4 rounded-lg text-black">Log in</button>    
-        </LogInForm>
-        <div className="py-1.5">
-          <small className="text-white">or</small>
-        </div>
         <div className="py-3">
           <button onClick={() => signIn('google')} className="bg-white p-2 px-4 rounded-lg">
             Log in with Google
@@ -99,12 +89,6 @@ export default function Layout({children}) {
           </button>
         </div>
         <Divider />
-        <div className="py-1.5">
-          <small className="text-white">No account?</small>
-        </div>
-        <div className="py-1.5">
-            <Link href={'/signup'} className="bg-white p-2 px-4 rounded-lg">Sign Up</Link>
-        </div>
       </LogInContainer>
     );
   }

@@ -30,7 +30,7 @@ export default function UserListings({user, ids}) {
             <Center>
                 <ListingsContainer>
                     {ids?.map(id => (
-                        <Listing user={user} productId={id}/>
+                        <Listing userId={user} productId={id}/>
                     ))}
                 </ListingsContainer>
             </Center>

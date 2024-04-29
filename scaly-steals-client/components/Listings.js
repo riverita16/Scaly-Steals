@@ -90,6 +90,7 @@ export default function Listings({user, products}) {
     async function saveProduct(id) {
         const data = { id, userId };
         console.log(userId);
+        console.log(id);
         await axios.post('/api/saved', data);
     }
 

@@ -23,7 +23,7 @@ export default function FurniturePage({featuredProduct, furniture, user}) {
   return (
     <Page>
       <Header user={user}/>
-      <Featured user={user?._id} product={featuredProduct}/>
+      <Featured userId={user?._id} product={featuredProduct}/>
       <Categories />
       <Listings user={user?._id} products={furniture}/>
     </Page>

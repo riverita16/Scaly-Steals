@@ -14,6 +14,20 @@ Better and more secure alternative to Craigslist and Facebook Marketplace for fe
 ### To start app on localhost
 `yarn dev`
 
+## General Overview
+Admin panel:
+- sign up with Google for simplicity of use
+- used to manage everything on the MongoDB database that is relayed to the client front
+
+Client front:
+- shows all available product lisings
+- filter by category
+- log in and sign up
+- like listings and add to cart
+- view profile to see name of logged in user and their listings
+- create a listing from the profile page
+- view cart items and total
+
 ## TODOS
 Client front:
 - allow managing of sort and limit in server side props
@@ -27,7 +41,7 @@ Admin panel:
 - fix photo preview for products (refresh for initial upload)
 
 ## Latest Updates (latest first)
-Sign up backend (copy from admin panel):
+Sign up backend:
 - implement sign in with other credentials
   - check for ufl email
   - add verify password field
@@ -61,7 +75,7 @@ Functionality requires Google Cloud credentials and MongoDB URI which are not pu
 
 Also requires AWS for image persistent storage.
 
-## Functionality
+## Functionality (original)
 - Communication between users (Chat)
   - email notficiation (configurable)
   - text suggestions

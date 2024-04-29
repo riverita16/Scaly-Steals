@@ -9,11 +9,13 @@ export default async function handler(req, res) {
 
     // add or remove from liked arr
     if (method === "POST") {
-        const {id, user} = req.body;
-        if (await User.findOne({_id: new ObjectId(user), liked:id})) {
-            await User.findOneAndUpdate({_id: new ObjectId(user)}, {$pull : {liked:id}});
+        console.log("yes");
+        const {id, userId} = req.body;
+        console.log("here");
+        if (await User.findOne({_id: new ObjectId(userId), liked:id})) {
+            await User.findOneAndUpdate({_id: new ObjectId(userId)}, {$pull : {liked:id}});
         } else {
-            await User.findOneAndUpdate({_id: new ObjectId(user)}, {$push : {liked:id}});
+            await User.findOneAndUpdate({_id: new ObjectId(userId)}, {$push : {liked:id}});
         }
 
         res.json(true);
