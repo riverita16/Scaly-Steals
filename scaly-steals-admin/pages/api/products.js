@@ -21,7 +21,8 @@ export default async function handler(req, res) {
         const productDoc = await Product.create({
             title,description,user,price,images,category
         });
-        await User.findOneAndUpdate({_id: {user}}, {$push : {products: {_id}}});
+
+        await User.findOneAndUpdate({_id: user}, {$push : {products: productDoc._id}});
         res.json(productDoc);
     }
 
@@ -37,7 +38,7 @@ export default async function handler(req, res) {
         const {title,description,user,price,images,category,_id} = req.body;
         if (req.query?.id) {
             await Product.deleteOne({_id:req.query?.id});
-            await User.findOneAndUpdate({_id: {user}}, {$pull : {products: {_id}}});
+            await User.findOneAndUpdate({_id: user}, {$pull : {products: {_id}}});
             res.json(true);
         }
     }

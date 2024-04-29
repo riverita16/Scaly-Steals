@@ -23,7 +23,7 @@ export default function HomePage({featuredProduct, allProducts, user}) {
   return (
     <Page>
       <Header user={user}/>
-      <Featured user={user?._id} product={featuredProduct}/>
+      <Featured userId={user?._id} product={featuredProduct}/>
       <Categories />
       <Listings user={user?._id} products={allProducts}/>
     </Page>
@@ -37,7 +37,7 @@ export async function getServerSideProps() {
   const tempUserId = '6606c52955e3c5a7c65fed2f'; // CHANGE THIS WHEN WE HAVE LOGIN
   await mongooseConnect();
   const featuredProduct = await Product.findById(featuredProductId);
-  const allProducts = await Product.find({}, null, {limit:10})
+  const allProducts = await Product.find({}, null, null)
   const user = await User.findById(tempUserId);
 
   return {

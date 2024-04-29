@@ -55,14 +55,14 @@ export default async function handler(req, res) {
             title,description,user,price,images,category
         });
         
-//        await User.findOneAndUpdate({_id: {user}}, {$push : {products: {id}}});
+        await User.findOneAndUpdate({_id: user}, {$push : {products: productDoc._id}});
         res.json(productDoc);
 
     } else if (method === 'DELETE') {
         const {user,_id} = req.body;
         if (req.query?.id) {
             await Product.deleteOne({_id:req.query?.id});
-            await User.findOneAndUpdate({_id: {user}}, {$pull : {products: {_id}}});
+            await User.findOneAndUpdate({_id: user}, {$pull : {products: {_id}}});
             res.json(true);
         }
     } else {

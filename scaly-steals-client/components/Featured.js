@@ -50,14 +50,14 @@ const ButtonWrapper = styled.div`
     margin-top: 25px;
 `;
 
-export default function Featured({user, product}) {
+export default function Featured({userId, product}) {
     async function saveProduct(id) {
-        const data = { id, user };
+        const data = { id, userId };
         await axios.post('/api/saved', data);
     }
 
     async function addToCart(id) {
-        const data = { id, user };
+        const data = { id, userId };
         await axios.post('/api/cart', data);
     }
 

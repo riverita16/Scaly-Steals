@@ -52,7 +52,7 @@ export default function CartListing({user, productId}) {
 
     async function removeFromCart(id) {
         await axios.delete('/api/cart?user='+user+'&id='+id);
-        router.replace(router.asPath);
+        router.reload();
     }
 
     useEffect(() => {
